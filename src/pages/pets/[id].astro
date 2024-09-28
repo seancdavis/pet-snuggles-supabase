@@ -25,7 +25,7 @@ if (error || !pet) {
 
 <Layout title={`${pet.name} | Pets`}>
   <section class="page-header">
-    <Greeting greeting={pet.greeting} />
+    <span>{pet.greeting}</span>
     <h1>{pet.name}</h1>
     <div class="bio">{pet.bio}</div>
   </section>
@@ -56,9 +56,19 @@ if (error || !pet) {
     text-align: center;
   }
 
-  .page-header h1 {
+  h1 {
     margin: 0 0 2rem;
     padding: 0;
+  }
+
+  span {
+    background-color: var(--neutral-dark-900);
+    border-radius: 0.25rem;
+    display: inline-block;
+    font-size: 0.85rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
   }
 
   .bio {
