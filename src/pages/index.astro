@@ -1,8 +1,23 @@
 ---
 import Layout from '../components/Layout.astro'
+import PetCard from '../components/PetCard.astro'
+import { supabase } from '../utils/database'
+
+const { data: pets, error } = await supabase.from('pets').select('*')
+
+if (error || !pets) {
+  console.error(error)
+  throw new Error('No pets found')
+}
 
 ---
 
 <Layout title="Pet Snuggles">
-  <h1>Pet Snuggles</h1>
+  <h1>Say hello to these cute pets!</h1>
+
+  <section>
+      {pets.map((pet) => (
+        <PetCard pet={pet} />
+      ))}
+  </section>
 </Layout>
