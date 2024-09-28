@@ -9,7 +9,7 @@ export const POST: APIRoute = async ({ params, redirect }) => {
     return new Response("No pet id provided", { status: 400 });
   }
 
-  const { data: pet, error } = await supabase.from("pets").select("*").eq(
+  const { data: pet } = await supabase.from("pets").select("*").eq(
     "id",
     id,
   ).single();

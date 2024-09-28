@@ -1,21 +1,57 @@
 ---
-import type {Tables } from '../../supabase/types.ts'
+import type { Tables } from "../../supabase/types.ts";
 
 interface Props {
-  pet: Tables<'pets'>
+  pet: Tables<"pets">;
 }
 
-
-
-const { pet }: Props = Astro.props
+const { pet }: Props = Astro.props;
 ---
 
-<div>
-  <a href={`/pets/${pet.id}`}>
-    <div>
-      <img src={`/images/${pet.image}`} alt={pet.name} />
-    </div>
-    <h2>{pet.name}</h2>
-  </a>
-  <p>Greeting: {pet.greeting}</p>
-</div>
+<a href={`/pets/${pet.id}`}>
+  <img src={`/images/${pet.image}`} alt={pet.name} />
+  <span class="greeting">{pet.greeting}</span>
+  <h2>{pet.name}</h2>
+</a>
+
+<style>
+  a {
+    border: 1px solid var(--blue-500);
+    border-radius: 0.5rem;
+    display: block;
+    padding: 1rem;
+  }
+
+  a:hover {
+    border: 1px solid var(--teal-200);
+    transition: border 0.2s ease-in-out;
+  }
+
+  img {
+    border-radius: 0.5rem;
+    display: block;
+    height: 12rem;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .greeting {
+    background-color: var(--blue-900);
+    border-radius: 0.25rem;
+    display: inline-block;
+    font-size: 0.85rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+  }
+</style>
