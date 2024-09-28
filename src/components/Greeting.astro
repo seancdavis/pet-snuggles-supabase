@@ -1,0 +1,21 @@
+---
+interface Props {
+  greeting: string;
+}
+
+const { greeting }: Props = Astro.props;
+---
+
+<span>{greeting}</span>
+
+<style>
+  span {
+    background-color: var(--blue-900);
+    border-radius: 0.25rem;
+    display: inline-block;
+    font-size: 0.85rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import type { Tables } from "../../supabase/types.ts";
+import Greeting from "./Greeting.astro";
 
 interface Props {
   pet: Tables<"pets">;
@@ -13,7 +14,7 @@ const { pet }: Props = Astro.props;
     src={`/.netlify/images?url=/images/${pet.image}&w=400&h=300&fit=cover`}
     alt={pet.name}
   />
-  <span class="greeting">{pet.greeting}</span>
+  <Greeting greeting={pet.greeting} />
   <h2>{pet.name}</h2>
 </a>
 
@@ -44,15 +45,5 @@ const { pet }: Props = Astro.props;
 
   a {
     text-decoration: none;
-  }
-
-  .greeting {
-    background-color: var(--blue-900);
-    border-radius: 0.25rem;
-    display: inline-block;
-    font-size: 0.85rem;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
   }
 </style>
