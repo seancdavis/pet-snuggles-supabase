@@ -1,0 +1,35 @@
+---
+import Layout from '../../components/Layout.astro'
+import { supabase } from '../../utils/database';
+
+export const prerender = false
+
+const { id } = Astro.params;
+
+if (!id) {
+  throw new Error('No pet id provided')
+}
+
+const { data: pet, error } = await supabase.from('pets').select('*').eq('id', id).single()
+
+if (error || !pet) {
+  console.error(error)
+  throw new Error('No pet found')
+}
+
+---
+
+<Layout title={`${pet.name} | Pets`}>
+  <div>
+    <h1>{pet.name}</h1>
+    <div>Say hi to {pet.name}!</div>
+    <div>{pet.bio}</div>
+    <div>{pet.name} has {pet.snuggles} snuggle{pet.snuggles === 1 ? "" : "s"}! You should give them some more!</div>
+    <div >
+      <form action={`/api/pets/${pet.id}/snuggle`} method="post">
+        <button type="submit">Give Snuggle</button>
+      </form>
+    </div>
+    <img  src={`/images/${pet.image}`} alt={pet.name} />
+  </div>
+</Layout>

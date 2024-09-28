@@ -5,21 +5,15 @@ interface Props {
   pet: Tables<'pets'>
 }
 
-const petImagePath = (pet: Tables<'pets'>) => {
-  return `/images/${pet.image}`
-}
 
-const petPath = (pet: Tables<'pets'>) => {
-  return `/pets/${pet.id}`
-}
 
 const { pet }: Props = Astro.props
 ---
 
 <div>
-  <a href={petPath(pet)}>
+  <a href={`/pets/${pet.id}`}>
     <div>
-      <img src={petImagePath(pet)} alt={pet.name} />
+      <img src={`/images/${pet.image}`} alt={pet.name} />
     </div>
     <h2>{pet.name}</h2>
   </a>
