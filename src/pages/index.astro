@@ -6,7 +6,7 @@ import { supabase } from "../utils/database";
 const { data: pets, error } = await supabase
   .from("pets")
   .select("*")
-  .order("name", { ascending: true });
+  .order("snuggles", { ascending: false });
 
 if (error || !pets) {
   console.error(error);

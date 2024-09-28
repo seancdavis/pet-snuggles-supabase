@@ -15,6 +15,7 @@ const { pet }: Props = Astro.props;
   />
   <span>{pet.greeting}</span>
   <h2>{pet.name}</h2>
+  <p class="snuggles">{pet.snuggles} snuggle{pet.snuggles === 1 ? "" : "s"}</p>
 </a>
 
 <style>
@@ -39,6 +40,7 @@ const { pet }: Props = Astro.props;
 
   h2 {
     font-size: 1.5rem;
+    margin-bottom: 0.5rem;
     padding: 0;
   }
 
@@ -54,5 +56,9 @@ const { pet }: Props = Astro.props;
     line-height: 1;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
+  }
+
+  .snuggles {
+    background-color: transparent;
   }
 </style>
