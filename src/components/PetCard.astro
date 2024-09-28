@@ -9,7 +9,10 @@ const { pet }: Props = Astro.props;
 ---
 
 <a href={`/pets/${pet.id}`}>
-  <img src={`/images/${pet.image}`} alt={pet.name} />
+  <img
+    src={`/.netlify/images?url=/images/${pet.image}&w=400&h=300&fit=cover`}
+    alt={pet.name}
+  />
   <span class="greeting">{pet.greeting}</span>
   <h2>{pet.name}</h2>
 </a>
@@ -30,9 +33,7 @@ const { pet }: Props = Astro.props;
   img {
     border-radius: 0.5rem;
     display: block;
-    height: 12rem;
     margin-bottom: 1rem;
-    object-fit: cover;
     width: 100%;
   }
 
